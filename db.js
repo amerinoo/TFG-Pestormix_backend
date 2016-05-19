@@ -8,7 +8,7 @@ sequelize = new Sequelize(process.env.DATABASE_URL, {
 
 var db = {};
 
-db.todo = sequelize.import(__dirname + '/models/cocktail.js');
+db.cocktail = sequelize.import(__dirname + '/models/cocktail.js');
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

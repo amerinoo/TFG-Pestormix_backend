@@ -18,33 +18,9 @@ db.sequelize.sync().then(function () {
 });
 var pg = require('pg');
 
-app.get('/db', function (request, response) {
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test_table', function (err, result) {
-            done();
-            if (err) {
-                console.error(err);
-                response.send("Error " + err);
-            }
-            else {
-                response.json(result.rows);
-                //response.render('pages/db', {results: result.rows});
-            }
-        });
-    });
-});
-app.get('/db/:id', function (request, response) {
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test_table WHERE id=' + request.params.id, function (err, result) {
-            done();
-            if (err) {
-                console.error(err);
-                response.send("Error " + err);
-            }
-            else {
-                response.json(result.rows);
-                //response.render('pages/db', {results: result.rows});
-            }
-        });
+// get all todos
+router.get('/db', function(req, res) {
+    db.cocktail.findAll({}).then(function(todos) {
+        res.json(todos);
     });
 });
