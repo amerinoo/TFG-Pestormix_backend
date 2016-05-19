@@ -26,7 +26,7 @@ app.get('/cocktails', function (req, res) {
 });
 
 // POST /todos
-app.post('/coktails', function (req, res) {
+app.post('/cocktails', function (req, res) {
     console.log(req.body);
     var body = _.pick(req.body, 'name', 'userId', 'description', 'alcohol', 'drinks');
 
