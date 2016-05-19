@@ -19,7 +19,7 @@ db.sequelize.sync().then(function () {
 var pg = require('pg');
 
 // get all todos
-router.get('/db', function(req, res) {
+app.get('/db', function(req, res) {
     db.cocktail.findAll({}).then(function(todos) {
         res.json(todos);
     });
