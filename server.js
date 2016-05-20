@@ -19,14 +19,14 @@ db.sequelize.sync().then(function () {
 });
 var pg = require('pg');
 
-// get all todos
+// get all cocktails
 app.get('/cocktails', function (req, res) {
     db.cocktail.findAll({}).then(function (todos) {
         res.json(todos);
     });
 });
 
-// POST /todos
+// POST /cocktails
 app.post('/cocktails', function (req, res) {
     console.log(req.body);
     //var body = _.pick(req.body, 'name', 'userId', 'description', 'alcohol', 'drinks');
@@ -35,5 +35,12 @@ app.post('/cocktails', function (req, res) {
         res.json(cocktail.toJSON());
     }, function (e) {
         res.status(400).json(e);
+    });
+});
+
+
+app.get('/test', function (req, res) {
+    db.cocktail.create({
+        name: "Test"
     });
 });
