@@ -48,3 +48,12 @@ app.post('/cocktails', function (req, res) {
     });
 });
 
+// DELETE all cocktails of user
+app.delete('/cocktails', function (req, res) {
+    var query = req.query;
+    if (query.hasOwnProperty('userId')) {
+        var where = {};
+        where.userId = query.userId;
+        db.cocktail.destroy({where: where});
+    }
+});
