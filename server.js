@@ -26,8 +26,24 @@ app.get('/cocktails', function (req, res) {
     });
 });
 
+// get a cocktail
+app.get('/cocktails', function (req, res) {
+    var query = req.query;
+    var where = {};
+
+    if (query.hasOwnProperty('name') && query.hasOwnProperty('userId')) {
+        where.name = query.name;
+        where.userId = query.userId;
+    }
+
+
+    db.cocktail.findAll({where: where}).then(function (todos) {
+        res.json(todos);
+    });
+});
+
 // POST /cocktails
-app.post('/cPost', function (req, res) {
+app.post('/cocktails', function (req, res) {
     console.log(req.body);
     var body = _.pick(req.body, 'name', 'userId', 'description', 'alcohol', 'drinks');
 
@@ -38,13 +54,3 @@ app.post('/cPost', function (req, res) {
     });
 });
 
-
-app.post('/test', function (req, res) {
-    db.cocktail.create({
-        name: "Test",
-        userId: "1234",
-        description: "Description",
-        alcohol: true,
-        drinks: "drinks"
-    });
-});
