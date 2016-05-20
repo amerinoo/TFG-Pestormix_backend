@@ -24,11 +24,12 @@ app.get('/cocktails', function (req, res) {
     var query = req.query;
     var where = {};
 
-    if (query.hasOwnProperty('name') && query.hasOwnProperty('userId')) {
-        where.name = query.name;
+    if (query.hasOwnProperty('userId')) {
         where.userId = query.userId;
+        if (query.hasOwnProperty('name')) {
+            where.name = query.name;
+        }
     }
-
 
     db.cocktail.findAll({where: where}).then(function (todos) {
         res.json(todos);
