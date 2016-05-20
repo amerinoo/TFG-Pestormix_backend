@@ -39,7 +39,7 @@ app.post('/cocktails', function (req, res) {
 });
 
 
-app.get('/test', function (req, res) {
+app.post('/test', function (req, res) {
     db.cocktail.create({
         name: "Test"
     });
