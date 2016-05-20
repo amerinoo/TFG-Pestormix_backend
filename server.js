@@ -41,6 +41,10 @@ app.post('/cocktails', function (req, res) {
 
 app.post('/test', function (req, res) {
     db.cocktail.create({
-        name: "Test"
+        name: "Test",
+        userId: "1234",
+        description: "Description",
+        alcohol: true,
+        drinks: "drinks"
     });
 });
