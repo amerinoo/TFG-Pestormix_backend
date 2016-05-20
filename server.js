@@ -19,14 +19,7 @@ db.sequelize.sync().then(function () {
 });
 var pg = require('pg');
 
-// get all cocktails
-app.get('/cocktails', function (req, res) {
-    db.cocktail.findAll({}).then(function (todos) {
-        res.json(todos);
-    });
-});
-
-// get a cocktail
+// get a cocktail/ all cocktails
 app.get('/cocktails', function (req, res) {
     var query = req.query;
     var where = {};
