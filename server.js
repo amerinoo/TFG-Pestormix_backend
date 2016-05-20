@@ -29,9 +29,9 @@ app.get('/cocktails', function (req, res) {
 // POST /todos
 app.post('/cocktails', function (req, res) {
     console.log(req.body);
-    var body = _.pick(req.body, 'name', 'userId', 'description', 'alcohol', 'drinks');
+    //var body = _.pick(req.body, 'name', 'userId', 'description', 'alcohol', 'drinks');
 
-    db.cocktail.create(body).then(function (cocktail) {
+    db.cocktail.create(req.body).then(function (cocktail) {
         res.json(cocktail.toJSON());
     }, function (e) {
         res.status(400).json(e);
