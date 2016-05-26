@@ -2,12 +2,14 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define('cocktail', {
         name: {
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 len: [1, 250]
             }
         },
         userId: {
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 len: [1, 250]
             }
@@ -20,7 +22,8 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false
         },
         drinks: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 };
